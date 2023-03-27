@@ -27,6 +27,9 @@ Projects
 --------
 
 *   **Upcoming Project** 🚀: I am currently working on a project with some of my friends, and it's going to be awesome. We plan to release the first version in August, so stay tuned!
+
+*   **Muslim App** 🕌: As one of my early projects, I'm developing an app for my Muslim brothers and sisters to help the community and do good. The app will have various features, including finding nearby mosques and other points of interest, as well as other useful information. And the best part, it will be completely ad-free!
+
 *   **Esercizis di Giaflix** 💻: I created a website called [Esercizis di Giaflix](https://esercizis.giaflix.net/), where you can find solutions to the exercises in school textbooks. For now, there's only one, but more will be coming soon.
 
 Interests
