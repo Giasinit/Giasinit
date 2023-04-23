@@ -1,0 +1,149 @@
+import { useRef, useState, useEffect } from "react";
+import {
+  Text,
+  View,
+  Button,
+  Platform,
+  Linking,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from "react-native";
+import { captureRef } from "react-native-view-shot";
+import Share from "react-native-share";
+import { useFonts } from "expo-font";
+
+const App = () => {
+  const [fontsLoaded] = useFonts({
+    takebyfont: require("./assets/font/font.otf"),
+  });
+
+  const viewRef = useRef(null),
+
+
+  const [hasInstagramInstalled, setHasInstagramInstalled] = useState(false); // State to track if Instagram is installed on user's device or not
+
+  useEffect(() => {
+    if (Platform.OS === "ios") {
+      // If platform is IOS then check if instagram is installed on the user's device using the `Linking.canOpenURL` API
+      Linking.canOpenURL("instagram://").then((val) =>
+        setHasInstagramInstalled(val)
+      );
+    } else {
+      // Else check on android device if instagram is installed in user's device using the `Share.isPackageInstalled` API
+      Share.isPackageInstalled("com.instagram.android").then(
+        ({ isInstalled }) => setHasInstagramInstalled(isInstalled)
+      );
+    }
+  }, []);
+
+  async function captureAndShare() {
+    try {
+      // Capture the screenshot of the element and store it into the uri variable
+      const uri = await captureRef(viewRef, {
+        format: "png",
+        quality: 1,
+        result: "data-uri"
+      });
+      if (hasInstagramInstalled) {
+        await Share.shareSingle({
+          appId: "1569915956799770", // Note: replace this with your own appId from facebook developer account, it won't work without it. (https://developers.facebook.com/docs/development/register/)
+          stickerImage: uri,
+          social: Share.Social.INSTAGRAM_STORIES,
+          title: "uao",
+          backgroundBottomColor: "#FFFFFF", // You can use any hexcode here and below
+          backgroundTopColor: "#FFFFFF",
+          //backgroundImage: uri, // This field is optional like the other fields (except appId) and you have to put a base64 encoded image here if you want to use it!
+        });
+      } else {
+        // If instagram is not installed in user's device then just share using the usual device specific bottomsheet (https://react-native-share.github.io/react-native-share/docs/share-open)
+        //await Share.open({ url: uri });
+        console.error("bro, non hai ig");
+      }
+    } catch (error) {
+      console.error("bah" + error);
+    }
+  }
+
+  async function captureAndShareWHATSAPP() {
+    try {
+      // Capture the screenshot of the element and store it into the uri variable
+      const uri = await captureRef(viewRef, {
+        format: "png",
+        quality: 1,
+        result: "base64",
+      });
+
+      await Share.shareSingle({
+        title: "Foo",
+        //url: uri,
+        social: Share.Social.WHATSAPP, // or Share.Social.EMAIL
+        url: `data:image/png;base64,${uri}`,
+        message: "Questo è TakeBy.it\nVisitabile su https://www.takeby.it",
+      });
+    } catch (error) {
+      console.error("bah" + error);
+    }
+  }
+
+  return (
+    <>
+
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            margin: 30,
+            backgroundColor: "#f6f6f6",
+            borderRadius:20,
+            padding: 20,
+          }}
+          ref={viewRef}
+        >
+          <Image
+            source={{
+              uri: "https://media.discordapp.net/attachments/1064209715560726639/1064209997887701012/5.png?width=657&height=657",
+            }}
+            style={{
+              width: 300,
+              height: 100,
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "takebyfont",
+              textAlign: "center",
+            }}
+          >
+            TakeBy è una piattaforma online che crea una rete di negozi,
+            consentendo agli utenti di prenotare prodotti e servizi da diverse
+            attività, come farmacie, supermercati, negozi di abbigliamento,
+            saloni di bellezza e altro ancora, attraverso un'unica app.
+          </Text>
+        
+
+      </View>
+
+      <View>
+        <Text style={{ color: "black", textAlign: "center", margin: 10 }}>
+          Fatto da Giasin
+        </Text>
+      </View>
+
+      <Button
+        color="red"
+        onPress={captureAndShare}
+        title="Condividi su instagram"
+      />
+
+      <Button
+        color="red"
+        onPress={captureAndShareWHATSAPP}
+        title="Condividi su whatsapp"
+      />
+    </>
+  );
+};
+
+export default App;
