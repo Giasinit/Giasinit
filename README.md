@@ -39,3 +39,11 @@ Interests
 My interests are varied, from volunteering to using my knowledge to help others or for work. 🤝
 
 *   **Arduino** 🤖: I'm interested in Arduino, and I've worked on a project using it around December 2022 and January 2023. Unfortunately, the project failed in the end, but I learned a lot from it.
+
+Some Cards
+---------
+
+![](http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=giasinit&theme=default&utcOffset=2)
+![](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=giasinit&theme=default)
+![](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=giasinit&theme=default)
+![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=giasinit&theme=default)
