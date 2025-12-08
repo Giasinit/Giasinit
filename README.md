@@ -1,6 +1,6 @@
 ### Chi sono
 
-Ciao! Sono Yassine, studente al quarto anno di Informatica presso l'Istituto Francesco Severi di Padova. Appassionato di tecnologia, sviluppo software da diversi anni e amo risolvere problemi reali attraverso il codice: quando un problema che incontro è condiviso da molti, mi piace essere io stesso a costruire la soluzione, senza aspettare che qualcun altro lo faccia.
+Ciao! Sono Yassine, studente al quinto anno di Informatica presso l'Istituto Francesco Severi di Padova. Appassionato di tecnologia, sviluppo software da diversi anni e amo risolvere problemi reali attraverso il codice: quando un problema che incontro è condiviso da molti, mi piace essere io stesso a costruire la soluzione, senza aspettare che qualcun altro lo faccia.
 
 ### Competenze tecniche
 
